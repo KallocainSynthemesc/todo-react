@@ -11,25 +11,31 @@ function App() {
       text: "This is a sample todo",
       description: "can be empty, however you want",
       isDone: false,
+      dateModified: Date.now(),
+      dateCreation: Date.now()
     },
   ]);
 
   const addTodo = (text) => {
-    const newTodos = [...todos, { text }];
+    const newTodos = [...todos, { text: text, description: '', isDone: false, dateModified: Date.now(), dateCreation: Date.now() }];
     setTodos(newTodos);
   };
 
   const markTodo = (index) => {
-    const newTodos = [...todos];
-    const oldIsDone = newTodos[index].isDone;
-    newTodos[index].isDone = !oldIsDone;
+    let newTodos = [...todos];
+    newTodos[index].isDone = !newTodos[index].isDone;
+    newTodos[index].dateModified = Date.now();
+    newTodos = newTodos.sort(compare);
     setTodos(newTodos);
   };
 
-  const removeTodo = (index) => {
-    const newTodos = [...todos];
-    newTodos.splice(index, 1);
-    setTodos(newTodos);
+  const compare = (a, b) => {
+    if(a.isDone !== b.isDone)
+      return a.isDone ? 1 : -1
+    else if(a.isDone === false)
+      return a.dateCreation - b.dateCreation;
+    else
+       return a.dateModified - b.dateModified;
   };
 
   return (
@@ -46,7 +52,6 @@ function App() {
                   index={index}
                   todo={todo}
                   markTodo={markTodo}
-                  removeTodo={removeTodo}
                 />
               </Card.Body>
             </Card>

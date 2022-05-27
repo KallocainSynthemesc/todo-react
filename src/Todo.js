@@ -5,7 +5,10 @@ export function Todo({ todo, index, markTodo, removeTodo }) {
   return (
     <div className="todo">
       <span style={{ textDecoration: todo.isDone ? "line-through" : "" }}>
-        {todo.text}
+        <b>Title: </b>{todo.text}
+      </span><br></br>
+      <span>
+        <b>Date Creation:</b> {todo.dateCreation}, <b>Date Modification:</b> {todo.dateModified}
       </span>
       <div>
         <Form.Check
@@ -13,6 +16,7 @@ export function Todo({ todo, index, markTodo, removeTodo }) {
           id="custom-switch"
           label="Check when done"
           variant="outline-success"
+          checked={todo.isDone}
           onClick={() => markTodo(index)} />
       </div>
     </div>
