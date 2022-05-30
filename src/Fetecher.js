@@ -102,6 +102,7 @@ export function updateTodo(obj, todoId, callback, callbackParam) {
       const objIndex = todos.findIndex((element => element.id === obj.id));
       todos[objIndex].description = obj.description;
       todos[objIndex].dateModification = obj.dateModification;
+      todos[objIndex].done = obj.done;
       window.localStorage.setItem("Todos", JSON.stringify(todos));
       callback(callbackParam);
     });
