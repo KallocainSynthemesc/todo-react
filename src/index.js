@@ -2,12 +2,36 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import UserForm from './UserForm';
+import TodoDetails from './TodoDetails';
 import reportWebVitals from './reportWebVitals';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="todo-react" element={<UserForm />} />
+        <Route path="User" element={<UserForm />}/>
+        <Route path="User/:userId/Todos" element={<App />}/>
+        <Route path="todo-react/:userId/Todos" element={<App />}/>
+        <Route path="User/:userId/Todos/:todoId/Details"  element={<TodoDetails />}/>
+        <Route path="todo-react/:userId/Todos/:todoId/Details" element={<TodoDetails />}/>
+        <Route
+          path="*"
+          element={
+            <main style={{ padding: "1rem" }}>
+              <p>There's nothing here!</p>
+            </main>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

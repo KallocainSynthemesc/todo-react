@@ -1,14 +1,14 @@
 import React from "react";
 import { Button, Form } from 'react-bootstrap';
 
-export function FormTodo({ addTodo }) {
+export function FormTodo({ saveNewTodo }) {
   const [value, setValue] = React.useState("");
 
   const handleSubmit = e => {
     e.preventDefault();
     if (!value)
       return;
-    addTodo(value);
+    saveNewTodo(value);
     setValue("");
   };
 

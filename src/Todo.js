@@ -1,23 +1,34 @@
 import React from "react";
-import { Form } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
+import { useNavigate} from "react-router-dom";
 
-export function Todo({ todo, index, markTodo, removeTodo }) {
+export function Todo({ todo, index, markTodo }) {
+  
+  let navigate = useNavigate(); 
+  const routeChange = () =>{ 
+    let path = todo.id + "/Details"; 
+    navigate(path);
+  }
+
   return (
     <div className="todo">
-      <span style={{ textDecoration: todo.isDone ? "line-through" : "" }}>
-        <b>Title: </b>{todo.text}
+      <span style={{ textDecoration: todo.done ? "line-through" : "" }}>
+        <b>Title: </b>{todo.title}
       </span><br></br>
-      <span>
-        <b>Date Creation:</b> {todo.dateCreation}, <b>Date Modification:</b> {todo.dateModified}
-      </span>
+      <span style={{ textDecoration: todo.done ? "line-through" : "" }}>
+        <b>Description: </b>{todo.description}
+      </span><br></br>
       <div>
         <Form.Check
           type="switch"
           id="custom-switch"
           label="Check when done"
           variant="outline-success"
-          checked={todo.isDone}
-          onClick={() => markTodo(index)} />
+          checked={todo.done}
+          onChange={() => markTodo(index)} />
+        <Button block="true" size="lg" type="submit" onClick={routeChange}>
+          Show Details
+        </Button>
       </div>
     </div>
   );
