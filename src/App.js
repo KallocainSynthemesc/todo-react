@@ -13,13 +13,19 @@ function App() {
   let params = useParams();
 
   useEffect(() => {
-    fetchData("/todo/resources/Intervenant/"+params.userId+"/Todos", setTodos)
+    fetchData("/todo/resources/Intervenant/"+params.userId+"/Todos", setSortedTodos)
   },[]) //empty array to prevent recursion
 
   const saveNewTodo = (text) =>{
     const todo = { title: text, description: '', done: false, dateModification: Date.now(), dateCreation: Date.now() };
     saveTodo(todo, params.userId, addTodo);
   };
+
+  const setSortedTodos = (data) =>
+  {
+    const todos = data.sort(compare);
+    setTodos(todos);
+  }
 
   const addTodo= (todo) =>{
     let newTodos = [...todos, todo];
@@ -30,7 +36,7 @@ function App() {
   const markTodo = (index) => {
     let newTodos = [...todos];
     newTodos[index].done = !newTodos[index].done;
-    newTodos[index].dateModified = Date.now();
+    newTodos[index].dateModification = Date.now();
     newTodos = newTodos.sort(compare);
     updateTodo(newTodos[index],'/todo/resources/Todo/' + newTodos[index].id, setTodos, newTodos);
   };
@@ -41,7 +47,7 @@ function App() {
     else if(a.done === false)
       return b.dateCreation - a.dateCreation;
     else
-       return a.dateModified - b.dateModified;
+       return a.dateModification - b.dateModification;
   };
 
   return (
