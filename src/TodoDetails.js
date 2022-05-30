@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import React, { useEffect } from "react"
 import { Card,Button, Form } from 'react-bootstrap';
-import { updateTodo, fetchData } from './Fetecher'
+import { updateTodo, getTodo } from './Fetecher'
 import { useNavigate } from "react-router-dom";
 
 
@@ -13,7 +13,7 @@ export default function TodoDetails() {
   let navigate = useNavigate(); 
 
   useEffect(() => {
-    fetchData("/todo/resources/Todo/"+params.todoId, setData);
+    getTodo(params.todoId, setData);
   },[]) //empty array to prevent recursion
 
   const handleSubmit = e => {
@@ -23,7 +23,7 @@ export default function TodoDetails() {
 
     todo.description = value;
     todo.dateModification = Date.now();
-    updateTodo(todo,'/todo/resources/Todo/' + params.todoId, navigate, -1);
+    updateTodo(todo, params.todoId, navigate, -1);
   };
 
   const setData = data =>{

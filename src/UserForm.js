@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
+import { saveUser } from "./Fetecher";
 import "./UserForm.css";
 
 export default function UserForm() {
@@ -17,18 +18,10 @@ export default function UserForm() {
     event.preventDefault();
   }
 
-  const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name: user.name })
-  };
-  
   let navigate = useNavigate(); 
   
   const commit = () =>{ 
-    fetch('/todo/resources/Intervenant', requestOptions)
-    .then(response => response.json())
-    .then(data => navigate(data.id + "/Todos"))
+    saveUser(user, navigate)
   }
 
   return (

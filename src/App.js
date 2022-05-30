@@ -5,7 +5,7 @@ import { Card } from 'react-bootstrap';
 import { Todo } from "./Todo";
 import { FormTodo } from "./FormTodo";
 import { useParams } from "react-router-dom";
-import { saveTodo, fetchData, updateTodo } from './Fetecher'
+import { saveTodo, getTodos, updateTodo } from './Fetecher'
 
 function App() {
   const [todos, setTodos] = React.useState([]);
@@ -13,7 +13,7 @@ function App() {
   let params = useParams();
 
   useEffect(() => {
-    fetchData("/todo/resources/Intervenant/"+params.userId+"/Todos", setSortedTodos)
+    getTodos(params.userId, setSortedTodos)
   },[]) //empty array to prevent recursion
 
   const saveNewTodo = (text) =>{
@@ -35,10 +35,11 @@ function App() {
 
   const markTodo = (index) => {
     let newTodos = [...todos];
+    console.log("before" + JSON.stringify(newTodos[index]))
     newTodos[index].done = !newTodos[index].done;
+    console.log("after" + JSON.stringify(newTodos[index]))
     newTodos[index].dateModification = Date.now();
-    newTodos = newTodos.sort(compare);
-    updateTodo(newTodos[index],'/todo/resources/Todo/' + newTodos[index].id, setTodos, newTodos);
+    updateTodo(newTodos[index],newTodos[index].id, setSortedTodos, newTodos);
   };
 
   const compare = (a, b) => {
