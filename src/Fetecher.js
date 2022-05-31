@@ -55,7 +55,6 @@ export function getTodos(userId, callback) {
     return json
   })
   .then(data => {
-    console.log(data);
     callback(data)
   }).catch((error) => {
     console.log("getTodos: Fallback to mock environment. Remove from production code. Error: " + error)
@@ -71,6 +70,7 @@ export function saveTodo(obj, param, callback) {
     body: JSON.stringify(obj),
   };
 
+  console.log("in Fetch saveTodo");
   fetch('/todo/resources/Intervenant/'+param+'/Todo', requestOptions)
     .then((response) => response.json())
     .then((data) => callback(data))

@@ -17,10 +17,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="todo-react" element={<UserForm />} />
-        <Route path="User" element={<UserForm />}/>
-        <Route path="User/:userId/Todos" element={<App />}/>
         <Route path="todo-react/:userId/Todos" element={<App />}/>
-        <Route path="User/:userId/Todos/:todoId/Details"  element={<TodoDetails />}/>
         <Route path="todo-react/:userId/Todos/:todoId/Details" element={<TodoDetails />}/>
         <Route
           path="*"

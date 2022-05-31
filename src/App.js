@@ -24,6 +24,7 @@ function App() {
   const setSortedTodos = (data) =>
   {
     const todos = data.sort(compare);
+    console.log(JSON.stringify(data));
     setTodos(todos);
   }
 
@@ -37,7 +38,6 @@ function App() {
     let newTodos = [...todos];
     console.log("before" + JSON.stringify(newTodos[index]))
     newTodos[index].done = !newTodos[index].done;
-    console.log("after" + JSON.stringify(newTodos[index]))
     newTodos[index].dateModification = Date.now();
     updateTodo(newTodos[index],newTodos[index].id, setSortedTodos, newTodos);
   };
@@ -58,7 +58,7 @@ function App() {
         <FormTodo saveNewTodo={saveNewTodo} />
         <div>
           {todos.map((todo, index) => (
-            <Card>
+            <Card key={todo.id}>
               <Card.Body>
                 <Todo
                   key={index}

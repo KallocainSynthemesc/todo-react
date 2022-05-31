@@ -30,13 +30,14 @@ export default function UserForm() {
         <Form.Group size="lg" controlId="name">
           <Form.Label>User Name</Form.Label>
           <Form.Control
+            data-testid="username"
             autoFocus
             type="text"
             value={user.name}
             onChange={(e) => setUser({...user, 'name': e.target.value})}
           />
         </Form.Group>
-        <Button block="true" size="lg" type="submit" disabled={!validateForm()} onClick={commit}>
+        <Button block="true" size="lg" type="submit" disabled={!validateForm()} onClick={commit} data-testid="user-submit">
           List Todos
         </Button>
       </Form>

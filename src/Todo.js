@@ -20,13 +20,14 @@ export function Todo({ todo, index, markTodo }) {
       </span><br></br>
       <div>
         <Form.Check
+          data-testid={"check-todo" + todo.id}
           type="switch"
           id="custom-switch"
           label="Check when done"
           variant="outline-success"
           checked={todo.done}
           onChange={() => markTodo(index)} />
-        <Button block="true" size="lg" type="submit" onClick={routeChange}>
+        <Button block="true" size="lg" type="submit" onClick={routeChange} data-testid={"shows-details" + todo.id}>
           Show Details
         </Button>
       </div>

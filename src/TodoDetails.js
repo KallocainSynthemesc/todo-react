@@ -34,7 +34,7 @@ export default function TodoDetails() {
   return (
       <div>
           <Card>
-            <Card.Body>
+            <Card.Body data-testid="todo">
               <h1>Title: {todo.title}</h1>
               <h2>Id: {todo.id}</h2>
               <h3>Creation Date: {new Date(todo.dateCreation).toDateString()}</h3>
