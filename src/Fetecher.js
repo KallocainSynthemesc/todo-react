@@ -41,9 +41,7 @@ export function getTodo(todoId, callback) {
     }).catch((error) => {
       console.log("getTodo: Fallback to mock environment. Remove from production code. Error: " + error)
       let todos = JSON.parse(window.localStorage.getItem("Todos"));
-      console.log(JSON.stringify(todos));
       const todo = todos.find(element => element.id === parseInt(todoId));
-      console.log(JSON.stringify(todo));
       callback(todo);
     });
 }
@@ -80,7 +78,6 @@ export function saveTodo(obj, param, callback) {
       obj.id = todoCount++;
       let newTodos = [...todos, obj];
       window.localStorage.setItem("Todos", JSON.stringify(newTodos));
-      console.log(JSON.stringify(newTodos));
       callback(obj);
     });
 }
