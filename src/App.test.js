@@ -42,12 +42,8 @@ it("test fetch,display and click handler", async () => {
     expect(submitElement).toBeInTheDocument();
     const titleElement = await waitFor(() => screen.findByText(/This is a sample todo/i));
     expect(titleElement).toBeInTheDocument();
-    const descriptionlement = await waitFor(() => screen.findByText(/You can change the description in the details view if you want/i));
-    expect(descriptionlement).toBeInTheDocument();
     const secondtitleElement = await waitFor(() => screen.findByText(/Second todo/i));
     expect(secondtitleElement).toBeInTheDocument();
-    const seconddescriptionlement = await waitFor(() => screen.findByText(/Description for second sample todo/i));
-    expect(seconddescriptionlement).toBeInTheDocument();
 
     const mockOnClick = jest.fn()
     render(<Button onClick={mockOnClick()} />)
@@ -75,7 +71,7 @@ it("test saving of todo", async () => {
     .mockImplementation(() => Promise.resolve({
       json: () =>
       Promise.resolve({
-        title: "KilianTodo",
+        title: "KilianTodoHardcoded",
         description:
           "hardcoded description in the fake POST",
         done: false,
@@ -100,7 +96,7 @@ it("test saving of todo", async () => {
   const clickIndicator = screen.getByTestId('form-submit')
   fireEvent.click(clickIndicator)
 
-  expect(await screen.findByText(/hardcoded description in the fake POST/i)).toBeInTheDocument()
+  expect(await screen.findByText(/KilianTodoHardcoded/i)).toBeInTheDocument()
   
   global.fetch.mockRestore();
 });

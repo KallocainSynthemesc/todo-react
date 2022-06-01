@@ -15,9 +15,6 @@ export function Todo({ todo, index, markTodo }) {
       <span style={{ textDecoration: todo.done ? "line-through" : "" }}>
         <b>Title: </b>{todo.title}
       </span><br></br>
-      <span style={{ textDecoration: todo.done ? "line-through" : "" }}>
-        <b>Description: </b>{todo.description}
-      </span><br></br>
       <div>
         <Form.Check
           data-testid={"check-todo" + todo.id}

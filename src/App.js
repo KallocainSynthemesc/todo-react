@@ -24,7 +24,6 @@ function App() {
   const setSortedTodos = (data) =>
   {
     const todos = data.sort(compare);
-    console.log(JSON.stringify(data));
     setTodos(todos);
   }
 
@@ -36,7 +35,6 @@ function App() {
 
   const markTodo = (index) => {
     let newTodos = [...todos];
-    console.log("before" + JSON.stringify(newTodos[index]))
     newTodos[index].done = !newTodos[index].done;
     newTodos[index].dateModification = Date.now();
     updateTodo(newTodos[index],newTodos[index].id, setSortedTodos, newTodos);
