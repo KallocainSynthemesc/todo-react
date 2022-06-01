@@ -2,7 +2,7 @@
 
 ## User "login" 
 For creating a user no password is required. I neglected security since securing the backend with oauth2 would have implied implementing a authorization server and converting the REST service into a oauth2 Resource Server.
-![Alt Text](https://s8.gifyu.com/images/chrome_kMZdNR9SbH.gif)
+![Alt Text](https://s8.gifyu.com/images/chrome_16KvsZILEm.gif)
 
 This action calls the REST service and pushes the User on the Database
 ![Alt Text](https://i.ibb.co/xC0zPF4/hibernate.png)
@@ -10,17 +10,17 @@ This action calls the REST service and pushes the User on the Database
 
 ## List Todos
 After a user name is entered the user gets delegated to the todo list view. New Todos can be added.
-![Alt Text](https://s8.gifyu.com/images/chrome_aQ8zbgThHJ.gif)
+![Alt Text](https://s8.gifyu.com/images/chrome_er7ry8BREb.md.gif)
 
 Adding a todo again calls the REST service which puts a new entry in the database
 ![Alt Text](https://i.ibb.co/KFmmQ87/todotable.png)
 
 A todo can be checked as done. This triggers an update on the todo and the list gets resorted.
-![Alt Text](https://s8.gifyu.com/images/chrome_NGVYsYHjvG.gif)
+![Alt Text](https://s8.gifyu.com/images/chrome_2iCSy414Po.gif)
 
 ## Details view
 A user can click on the 'Show Details' button to show a more detailed view of the Todo. There he can change the default description of the Todo
-![Alt Text](https://s8.gifyu.com/images/chrome_uLMbrwmRD4.gif)
+![Alt Text](https://s8.gifyu.com/images/chrome_Cv7munJuCX.gif)
 
 ## Backend mock
 To mock the backend I decided to work with localStorage. I first wanted to use Mock Service Worker but ran into an issue with my environment setup.
