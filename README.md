@@ -10,7 +10,7 @@ This action calls the REST service and pushes the User on the Database
 
 ## List Todos
 After a user name is entered the user gets delegated to the todo list view. New Todos can be added.
-![Alt Text](https://s8.gifyu.com/images/chrome_er7ry8BREb.md.gif)
+![Alt Text](https://s8.gifyu.com/images/chrome_er7ry8BREb99479629212bf4c3.gif)
 
 Adding a todo again calls the REST service which puts a new entry in the database
 ![Alt Text](https://i.ibb.co/KFmmQ87/todotable.png)
