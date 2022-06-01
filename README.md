@@ -22,10 +22,10 @@ A todo can be checked as done. This triggers an update on the todo and the list 
 A user can click on the 'Show Details' button to show a more detailed view of the Todo. There he can change the default description of the Todo
 ![Alt Text](https://s8.gifyu.com/images/chrome_uLMbrwmRD4.gif)
 
-##Backend mock
+## Backend mock
 To mock the backend I decided to work with localStorage. I first wanted to use Mock Service Worker but ran into an issue with my environment setup.
 
-###Could not proxy request /mockServiceWorker.js from localhost:3000 to http://localhost:8080/
+### Could not proxy request /mockServiceWorker.js from localhost:3000 to http://localhost:8080/
 
 To make Mock Service Worker function properly I would need to remove my proxy entry in the package.json. The problem with that is that I could not forward my requests
 to the actual resource server anymore. I would need to choose between the Mock Service Worker or my actual resource server or constantly change the proxy entry. 
