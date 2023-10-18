@@ -24,7 +24,7 @@ export function Todo({ todo, index, markTodo }) {
           variant="outline-success"
           checked={todo.done}
           onChange={() => markTodo(index)} />
-        <Button block="true" size="lg" type="submit" onClick={routeChange} data-testid={"shows-details" + todo.id}>
+        <Button block="true" type="submit" onClick={routeChange} data-testid={"shows-details" + todo.id}>
           Show Details
         </Button>
       </div>

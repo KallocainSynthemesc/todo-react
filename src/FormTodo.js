@@ -2,21 +2,24 @@ import React from "react";
 import { Button, Form } from 'react-bootstrap';
 
 export function FormTodo({ saveNewTodo }) {
-  const [value, setValue] = React.useState("");
+  const [title, setTitle] = React.useState("");
+  const [description, setDescription] = React.useState("");
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (!value)
+    if (!title || !description)
       return;
-    saveNewTodo(value);
-    setValue("");
+    saveNewTodo(title, description);
+    setTitle("");
+    setDescription("");
   };
 
   return (
     <Form onSubmit={handleSubmit}>
+      <h3>Add Todo</h3>
       <Form.Group>
-        <Form.Label><b>Add Todo</b></Form.Label>
-        <Form.Control type="text" className="input" value={value} onChange={e => setValue(e.target.value)} placeholder="Add new todo" data-testid="form-input"/>
+        <Form.Control type="text" className="input" value={title} onChange={e => setTitle(e.target.value)} placeholder="Title" data-testid="form-input"/>
+        <Form.Control type="text" className="input" value={description} onChange={e => setDescription(e.target.value)} placeholder="Description" data-testid="form-input"/>
       </Form.Group>
       <Button variant="primary mb-3" type="submit" data-testid="form-submit">
         Submit

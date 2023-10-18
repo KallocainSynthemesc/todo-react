@@ -8,7 +8,10 @@ import { useNavigate } from "react-router-dom";
 export default function TodoDetails() {
   const [todo, setTodo] = React.useState([]);
   const [value, setValue] = React.useState("");
-
+  const margin = {
+    marginTop: '3%',
+  };
+  
   let params = useParams();
   let navigate = useNavigate(); 
 
@@ -31,8 +34,15 @@ export default function TodoDetails() {
     setValue(data.description);
   }
 
+  const routeChange = () =>{ 
+    navigate(-1);
+  }
+
   return (
-      <div>
+      <div className="container" style={margin}>
+          <Button block="true" type="submit" onClick={routeChange} data-testid={"shows-details" + todo.id}>
+           🏠 Back
+          </Button>
           <Card>
             <Card.Body data-testid="todo">
               <h1>Title: {todo.title}</h1>

@@ -16,8 +16,8 @@ function App() {
     getTodos(params.userId, setSortedTodos)
   },[]) //empty array to prevent recursion
 
-  const saveNewTodo = (text) =>{
-    const todo = { title: text, description: '', done: false, dateModification: Date.now(), dateCreation: Date.now() };
+  const saveNewTodo = (title, description) =>{
+    const todo = { title: title, description: description, done: false, dateModification: Date.now(), dateCreation: Date.now() };
     saveTodo(todo, params.userId, addTodo);
   };
 
@@ -54,6 +54,7 @@ function App() {
       <div className="container">
         <h1 className="text-center mb-4">Todo List</h1>
         <FormTodo saveNewTodo={saveNewTodo} />
+        <h3>Todos</h3>
         <div>
           {todos.map((todo, index) => (
             <Card key={todo.id}>
